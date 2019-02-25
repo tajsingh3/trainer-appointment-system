@@ -7,6 +7,7 @@ import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 
 import Appointment from "./Appointment";
+import SimpleList from "./SimpleList";
 
 function TabContainer(props) {
   return (
@@ -43,7 +44,7 @@ class SimpleTabs extends React.Component {
     return (
       <div className={classes.root}>
         <AppBar position="static">
-          <Tabs value={value} onChange={this.handleChange}>
+          <Tabs value={value} onChange={this.handleChange} centered>
             <Tab label="Monday" />
             <Tab label="Tuesday" />
             <Tab label="Wednesday" />
@@ -53,7 +54,11 @@ class SimpleTabs extends React.Component {
             <Tab label="Sunday" />
           </Tabs>
         </AppBar>
-        {value === 0 && <TabContainer>Monday slots</TabContainer>}
+        {value === 0 && (
+          <TabContainer>
+            <SimpleList />
+          </TabContainer>
+        )}
         {value === 1 && <TabContainer>Tuesday slots</TabContainer>}
         {value === 2 && <TabContainer>Wednesday slots</TabContainer>}
         {value === 3 && <TabContainer>Thursday slots</TabContainer>}
