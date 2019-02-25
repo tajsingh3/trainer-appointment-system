@@ -9,6 +9,9 @@ import Typography from "@material-ui/core/Typography";
 import Appointment from "./Appointment";
 import SimpleList from "./SimpleList";
 
+import "../styles/tabs.scss";
+
+
 function TabContainer(props) {
   return (
     <Typography component="div" style={{ padding: 8 * 3 }}>
@@ -25,6 +28,7 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper
+    // width:700
   }
 });
 
@@ -55,9 +59,11 @@ class SimpleTabs extends React.Component {
           </Tabs>
         </AppBar>
         {value === 0 && (
-          <TabContainer>
-            <SimpleList />
-          </TabContainer>
+          <div className='tabs-container'>
+            <TabContainer>
+              <SimpleList />
+            </TabContainer>
+          </div>
         )}
         {value === 1 && <TabContainer>Tuesday slots</TabContainer>}
         {value === 2 && <TabContainer>Wednesday slots</TabContainer>}

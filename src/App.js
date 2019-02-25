@@ -1,14 +1,16 @@
 import React, { Component } from "react";
-import SimpleTabs from "./components/SimpleTabs";
+
+// import FullWidthTabs from "./components/FullWidthTabs";
+import TrainerSchecdualMaker from "./components/TrainerSchedualMaker";
 
 import "./App.css";
-import "./styles/tabs.scss";
 
 class App extends Component {
   render() {
     return (
-      <div >
-        <SimpleTabs />
+      <div>
+        {/* <FullWidthTabs /> */}
+        <TrainerSchecdualMaker />
       </div>
     );
   }
