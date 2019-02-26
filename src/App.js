@@ -1,23 +1,24 @@
 import React, { Component } from "react";
+import { Provider } from "react-redux";
 
-// import FullWidthTabs from "./components/FullWidthTabs";
-// import TrainerSchecdualMaker from "./components/TrainerSchedualMaker";
-// import AppointmentScheduar from './components/AppointmentSchedular';
-// import AppointmentDateRangePicker from "./components/AppointmentDateRangePicker";
-// import AppointmentDashboardPage from "./components/AppointmentDashboardPage";
-// import AppointmentSlotsPage from "./components/pages/AppointmentSlotsPage";
-// import SchedualMakerPage from "./components/pages/SchedualMakerPage";
-// import Header from "./components/Header";
-// import SidebarHeader from './components/SidebarHeader';
-import AppRouter from './routers/AppRouter';
+import AppRouter from "./routers/AppRouter";
+import configureStore from "./store/configureStore";
 
 import "./App.css";
+
+const store = configureStore();
+
+const jsx = (
+  <Provider store={store}>
+    <AppRouter />
+  </Provider>
+);
 
 class App extends Component {
   render() {
     return (
       <div>
-        <AppRouter/>
+        {jsx}
       </div>
     );
   }
