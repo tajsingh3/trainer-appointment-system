@@ -7,7 +7,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import { Link } from "react-router-dom";
 
-import Header from "./Header";
+import AppBar from "./AppBar";
 
 const styles = {
   list: {
@@ -39,14 +39,24 @@ class TemporaryDrawer extends React.Component {
       <div className={classes.list}>
         <List>
           <ListItem button>
-            {/* <Link ><ListItemText primary="My Appointments" /></Link> */}
-            <ListItemText primary="My Appointments" />
+            <Link to="/">
+              <ListItemText primary="Home" />
+            </Link>
           </ListItem>
           <ListItem button>
-            <ListItemText primary="Create Appointments Slots" />
+            <Link to="/myappointments">
+              <ListItemText primary="My Appointments" />
+            </Link>
           </ListItem>
           <ListItem button>
-            <ListItemText primary="Available Appointments" />
+            <Link to="/createappointments">
+              <ListItemText primary="Create Appointments" />
+            </Link>
+          </ListItem>
+          <ListItem button>
+            <Link to="availableappointments">
+              <ListItemText primary="Available Appointments" />
+            </Link>
           </ListItem>
         </List>
       </div>
@@ -54,7 +64,7 @@ class TemporaryDrawer extends React.Component {
 
     return (
       <div>
-        <Header toggleDrawer={this.toggleDrawer("left", true)} />
+        <AppBar toggleDrawer={this.toggleDrawer("left", true)} />
         <Drawer
           open={this.state.left}
           onClose={this.toggleDrawer("left", false)}

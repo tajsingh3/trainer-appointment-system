@@ -8,7 +8,8 @@ import React, { Component } from "react";
 // import AppointmentSlotsPage from "./components/pages/AppointmentSlotsPage";
 // import SchedualMakerPage from "./components/pages/SchedualMakerPage";
 // import Header from "./components/Header";
-import Sidebar from './components/Sidebar';
+// import SidebarHeader from './components/SidebarHeader';
+import AppRouter from './routers/AppRouter';
 
 import "./App.css";
 
@@ -16,15 +17,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        {/* <FullWidthTabs /> */}
-        {/* <TrainerSchecdualMaker /> */}
-        {/* <AppointmentScheduar /> */}
-        {/* <AppointmentDateRangePicker /> */}
-        {/* <AppointmentDashboardPage /> */}
-        {/* <AppointmentSlotsPage /> */}
-        {/* <SchedualMakerPage /> */}
-        {/* <Header /> */}
-        <Sidebar />
+        <AppRouter/>
       </div>
     );
   }
