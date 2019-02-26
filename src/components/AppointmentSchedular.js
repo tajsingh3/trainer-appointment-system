@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 import moment from "moment";
 
 import "react-dates/initialize";
@@ -17,6 +18,9 @@ const styles = theme => ({
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
     width: 200
+  },
+  fab: {
+    margin: theme.spacing.unit
   }
 });
 
@@ -24,7 +28,7 @@ class AppointmentSchedular extends Component {
   state = {
     date: moment(),
     focused: false,
-    time:moment().format('H:mm'),
+    time: moment().format("H:mm"),
     selectedDate: moment()
   };
 
@@ -32,11 +36,12 @@ class AppointmentSchedular extends Component {
     e.preventDefault();
 
     //do some validation on date and time before setting state
-    let fullDate = `${this.state.date.format("YYYY-MM-DD")} ${this.state.time}:00:00`;
+    let fullDate = `${this.state.date.format("YYYY-MM-DD")} ${
+      this.state.time
+    }:00:00`;
     let selectedDate = moment(fullDate);
 
     this.setState(() => ({ selectedDate }));
-
 
     console.log(selectedDate);
   };
@@ -74,7 +79,14 @@ class AppointmentSchedular extends Component {
               this.setState(() => ({ time }));
             }}
           />
-          <button>create</button>
+          <Button
+            variant="outlined"
+            color="primary"
+            className={classes.button}
+            type="submit"
+          >
+            Create
+          </Button>
         </form>
       </div>
     );

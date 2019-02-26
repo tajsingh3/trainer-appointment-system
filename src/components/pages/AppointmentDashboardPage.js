@@ -1,7 +1,7 @@
 import React from "react";
 
-import AppointmentTabs from "./AppointmentTabs";
-import AppointmentDateRangePicker from "./AppointmentDateRangePicker";
+import AppointmentTabs from "../AppointmentTabs";
+import AppointmentDateRangePicker from "../AppointmentDateRangePicker";
 
 const AppointmentDashboardPage = () => (
   <div>
