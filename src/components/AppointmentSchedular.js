@@ -61,7 +61,6 @@ class AppointmentSchedular extends Component {
             id="time"
             label="Appointment Time"
             type="time"
-            //defaultValue="07:30"
             value={this.state.time}
             className={classes.textField}
             InputLabelProps={{

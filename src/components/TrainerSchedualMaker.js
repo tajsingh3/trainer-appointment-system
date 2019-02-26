@@ -5,10 +5,7 @@ import TextField from "@material-ui/core/TextField";
 import moment from "moment";
 
 import "react-dates/initialize";
-import {
-  DateRangePicker,
-  SingleDatePicker,
-} from "react-dates";
+import { DateRangePicker, SingleDatePicker } from "react-dates";
 import "react-dates/lib/css/_datepicker.css";
 
 const styles = theme => ({
@@ -27,9 +24,8 @@ function TimePickers(props) {
   const { classes } = props;
 
   return (
-    //<form className={classes.container} noValidate>
     <div>
-        <SingleDatePicker />
+      <SingleDatePicker />
       <TextField
         id="time"
         label="Appointment Time"
@@ -51,12 +47,8 @@ function TimePickers(props) {
           console.log(fullMoment.format("YYYY-MM-DD H:mm"));
         }}
       />
-      <DateRangePicker
-  
-/>
+      <DateRangePicker />
     </div>
-
-    //</form>
   );
 }
 
