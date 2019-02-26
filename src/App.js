@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 
 // import FullWidthTabs from "./components/FullWidthTabs";
-import TrainerSchecdualMaker from "./components/TrainerSchedualMaker";
+// import TrainerSchecdualMaker from "./components/TrainerSchedualMaker";
+import AppointmentScheduar from './components/AppointmentSchedular'
 
 import "./App.css";
 
@@ -10,7 +11,9 @@ class App extends Component {
     return (
       <div>
         {/* <FullWidthTabs /> */}
-        <TrainerSchecdualMaker />
+        {/* <TrainerSchecdualMaker /> */}
+        <AppointmentScheduar />
+
       </div>
     );
   }
