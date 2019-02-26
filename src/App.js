@@ -6,7 +6,9 @@ import React, { Component } from "react";
 // import AppointmentDateRangePicker from "./components/AppointmentDateRangePicker";
 // import AppointmentDashboardPage from "./components/AppointmentDashboardPage";
 // import AppointmentSlotsPage from "./components/pages/AppointmentSlotsPage";
-import SchedualMakerPage from "./components/pages/SchedualMakerPage";
+// import SchedualMakerPage from "./components/pages/SchedualMakerPage";
+// import Header from "./components/Header";
+import Sidebar from './components/Sidebar';
 
 import "./App.css";
 
@@ -20,7 +22,9 @@ class App extends Component {
         {/* <AppointmentDateRangePicker /> */}
         {/* <AppointmentDashboardPage /> */}
         {/* <AppointmentSlotsPage /> */}
-        <SchedualMakerPage />
+        {/* <SchedualMakerPage /> */}
+        {/* <Header /> */}
+        <Sidebar />
       </div>
     );
   }
