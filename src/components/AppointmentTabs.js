@@ -73,13 +73,41 @@ class AppointmentTabs extends React.Component {
           index={this.state.value}
           onChangeIndex={this.handleChangeIndex}
         >
-          <div className="tabs-container">
-            <TabContainer dir={theme.direction}>
-              <SimpleList />
-            </TabContainer>
-            {/* <TabContainer dir={theme.direction}>Item Two</TabContainer> */}
-            {/* <TabContainer dir={theme.direction}>Item Three</TabContainer> */}
-          </div>
+          <TabContainer dir={theme.direction}>
+            <div className="tabs-container">
+              <SimpleList day={1} />
+            </div>
+          </TabContainer>
+          <TabContainer dir={theme.direction}>
+            <div className="tabs-container">
+              <SimpleList day={2} />
+            </div>
+          </TabContainer>
+          <TabContainer dir={theme.direction}>
+            <div className="tabs-container">
+              <SimpleList day={3} />
+            </div>
+          </TabContainer>
+          <TabContainer dir={theme.direction}>
+            <div className="tabs-container">
+              <SimpleList day={4} />
+            </div>
+          </TabContainer>
+          <TabContainer dir={theme.direction}>
+            <div className="tabs-container">
+              <SimpleList day={5} />
+            </div>
+          </TabContainer>
+          <TabContainer dir={theme.direction}>
+            <div className="tabs-container">
+              <SimpleList day={6} />
+            </div>
+          </TabContainer>
+          <TabContainer dir={theme.direction}>
+            <div className="tabs-container">
+              <SimpleList day={7} />
+            </div>
+          </TabContainer>
         </SwipeableViews>
       </div>
     );
@@ -90,5 +118,6 @@ AppointmentTabs.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired
 };
+
 
 export default withStyles(styles, { withTheme: true })(AppointmentTabs);
