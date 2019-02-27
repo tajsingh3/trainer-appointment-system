@@ -7,25 +7,25 @@ import * as serviceWorker from "./serviceWorker";
 import configureStore from "./store/configureStore";
 import { Provider } from "react-redux";
 
-import {
-  addAppointment,
-  cancelAppointment,
-  removeAppointment
-} from "./actions/appointments";
+// import {
+//   addAppointment,
+//   cancelAppointment,
+//   removeAppointment
+// } from "./actions/appointments";
 
-import moment from "moment";
+// import moment from "moment";
 
 
 const store = configureStore();
-let appt = { id: 0, date: moment(), status: "available" };
-store.dispatch(addAppointment(appt,'client'));
+// let appt = { id: 0, date: moment(), status: "available" };
+// store.dispatch(addAppointment(appt,'client'));
 
-store.dispatch(addAppointment({id:1,date:moment(),status:'available'},'trainer'));
+// store.dispatch(addAppointment({id:1,date:moment(),status:'available'},'trainer'));
 
-store.dispatch(cancelAppointment(0,'client'));
+// store.dispatch(cancelAppointment(0,'client'));
 
-store.dispatch(removeAppointment(1,'trainer'));
-console.log(store.getState());
+// store.dispatch(removeAppointment(1,'trainer'));
+// console.log(store.getState());
 
 const jsx = (
   <Provider store={store}>
