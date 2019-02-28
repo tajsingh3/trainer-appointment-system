@@ -25,7 +25,7 @@ function SimpleList(props) {
       <List component="nav">
         {props.appointments.map(appointment => (
           <ListItem button>
-            <Appointment date={appointment.date} />
+            <Appointment appointment={appointment}/>
           </ListItem>
         ))}
       </List>

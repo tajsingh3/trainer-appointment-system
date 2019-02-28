@@ -46,6 +46,28 @@ export const startAddAppointment = (appointment, appointmentType) => {
   };
 };
 
+// export const selectAppointment = appointment => {
+//   return {
+//     type: "SELECT_APPOINTMENT",
+//     id
+//   };
+// };
+
+export const startSelectAppointment = appointment => {
+  return dispatch => {
+    database
+      .ref(`myAppointments/${appointment.id}`)
+      .set({
+        date: appointment.date.format("dddd, MMMM Do YYYY h:mm a"),
+        status: "selected"
+      })
+      .then(() => {
+        dispatch(addAppointment(appointment, "my"));
+      });
+  };
+};
+
+//this can only be from client so muappointment
 export const cancelAppointment = (id, appointmentType) => {
   appointmentType = appointmentType.toUpperCase();
   return {
