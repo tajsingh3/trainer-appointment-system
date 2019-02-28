@@ -22,11 +22,27 @@
 //   };
 // };
 
+import database from "../firebase/firebase";
+
 export const addAppointment = (appointment, appointmentType) => {
   appointmentType = appointmentType.toUpperCase();
   return {
     type: `ADD_${appointmentType}_APPOINTMENT`,
     appointment
+  };
+};
+
+export const startAddAppointment = (appointment, appointmentType) => {
+  return dispatch => {
+    const { date, status } = appointment;
+    database
+      .ref("availableAppointments")
+      .push({ date: date.format("dddd, MMMM Do YYYY h:mm a"), status })
+      .then(ref => {
+        dispatch(
+          addAppointment({ id: ref.key, date, status }, appointmentType)
+        );
+      });
   };
 };
 

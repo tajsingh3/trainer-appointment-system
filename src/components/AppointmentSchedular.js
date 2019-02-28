@@ -10,7 +10,7 @@ import "react-dates/initialize";
 import { SingleDatePicker } from "react-dates";
 import "react-dates/lib/css/_datepicker.css";
 
-import { addAppointment } from "../actions/appointments";
+import { startAddAppointment } from "../actions/appointments";
 
 const styles = theme => ({
   container: {
@@ -43,7 +43,7 @@ class AppointmentSchedular extends Component {
     const selectedDate = moment(fullDate);
 
     const appointment = { id: 0, date: selectedDate, status: "available" };
-    this.props.dispatch(addAppointment(appointment, "available"));
+    this.props.dispatch(startAddAppointment(appointment, "available"));
   };
 
   render() {
