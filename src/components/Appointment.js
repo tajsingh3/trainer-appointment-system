@@ -29,6 +29,7 @@ const Appointment = props => {
         color="primary"
         className={classes.button}
         onClick={props.selectAppointment}
+        disabled={props.isSelected}
       >
         Select
       </Button>
@@ -42,13 +43,18 @@ const mapDispatchToProps = (dispatch, props) => {
   };
 };
 
+const mapStateToProps = (state,props) => {
+  const isSelected = props.appointment.status === 'selected';
+  return { isSelected };
+};
+
 Appointment.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(
   connect(
-    undefined,
+    mapStateToProps,
     mapDispatchToProps
   )(Appointment)
 );
