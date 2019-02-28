@@ -1,15 +1,15 @@
-const trainerAppointmentsReducer = (state = [], action) => {
+const availableAppointmentsReducer = (state = [], action) => {
   switch (action.type) {
-    case "ADD_TRAINER_APPOINTMENT":
+    case "ADD_AVAILABLE_APPOINTMENT":
       return [...state, action.appointment];
-    case "CANCEL_TRAINER_APPOINTMENT": //CLIENT DOES THIS
+    case "CANCEL_AVAILABLE_APPOINTMENT": //CLIENT DOES THIS
       return state.map(appointment => {
         if (appointment.id === action.id) {
           appointment.status = "canceled";
         }
         return appointment;
       });
-    case "REMOVE_TRAINER_APPOINTMENT":
+    case "REMOVE_AVAILABLE_APPOINTMENT":
       return state.filter((appointment) => {
         if(appointment.id === action.id){
           return false;
@@ -21,7 +21,7 @@ const trainerAppointmentsReducer = (state = [], action) => {
   }
 };
 
-export default trainerAppointmentsReducer;
+export default availableAppointmentsReducer;
 
 //sample appointment object
 //{

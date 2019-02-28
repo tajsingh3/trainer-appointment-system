@@ -1,13 +1,13 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 
-import trainerAppointmentsReducer from "../reducers/trainerAppointments";
-import clientAppointmentsReducer from "../reducers/clientAppointments";
+import availableAppointmentsReducer from "../reducers/availableAppointments";
+import myAppointmentsReducer from "../reducers/myAppointments";
 import filterReducer from "../reducers/filters";
 
 const reducers = combineReducers({
-  trainerAppointments: trainerAppointmentsReducer,
-  clientAppointments: clientAppointmentsReducer,
+  availableAppointments: availableAppointmentsReducer,
+  myAppointments: myAppointmentsReducer,
   filters: filterReducer
 });
 

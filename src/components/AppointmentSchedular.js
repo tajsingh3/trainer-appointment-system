@@ -43,7 +43,7 @@ class AppointmentSchedular extends Component {
     const selectedDate = moment(fullDate);
 
     const appointment = { id: 0, date: selectedDate, status: "available" };
-    this.props.dispatch(addAppointment(appointment, "trainer"));
+    this.props.dispatch(addAppointment(appointment, "available"));
   };
 
   render() {

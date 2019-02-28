@@ -41,7 +41,7 @@ const mapStateToProps = (state, props) => {
   let filteredAppointments;
   console.log(state.filters.isAvailableAppointmentsPage);
   if(props.isAvailableAppointmentsPage){
-    filteredAppointments = selecteAvailableAppointments(state.trainerAppointments,state.filters);
+    filteredAppointments = selecteAvailableAppointments(state.availableAppointments,state.filters);
   }
   filteredAppointments = selectAppointmentsByDay(filteredAppointments, props.day);
 
