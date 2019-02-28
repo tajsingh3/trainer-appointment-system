@@ -5,7 +5,6 @@ const initialState = {
   myEndDate: moment().endOf("month"),
   availableStartDate: null,
   availableEndDate: null,
-  // isAvailableAppointmentsPage:undefined
 };
 
 const filtersReducer = (state = initialState, action) => {

@@ -2,11 +2,11 @@ import React from "react";
 
 import AppointmentSchedular from "../AppointmentSchedular";
 
-const SchedualMakerPage = () => (
+const CreateAppointmentPage = () => (
   <div>
     <p>Schedual Maker Page</p>
     <AppointmentSchedular />
   </div>
 );
 
-export default SchedualMakerPage;
+export default CreateAppointmentPage;
