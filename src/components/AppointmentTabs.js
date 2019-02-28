@@ -47,6 +47,7 @@ class AppointmentTabs extends React.Component {
 
   render() {
     const { classes, theme } = this.props;
+    const days = [1, 2, 3, 4, 5, 6, 7];
 
     return (
       <div className={classes.root}>
@@ -73,41 +74,88 @@ class AppointmentTabs extends React.Component {
           index={this.state.value}
           onChangeIndex={this.handleChangeIndex}
         >
-          <TabContainer dir={theme.direction}>
+          {/* <TabContainer dir={theme.direction}>
             <div className="tabs-container">
-              <SimpleList day={1} isAvailableAppointmentsPage={this.props.isAvailableAppointmentsPage}/>
+              <SimpleList
+                day={1}
+                isAvailableAppointmentsPage={
+                  this.props.isAvailableAppointmentsPage
+                }
+              />
             </div>
           </TabContainer>
           <TabContainer dir={theme.direction}>
             <div className="tabs-container">
-              <SimpleList day={2} isAvailableAppointmentsPage={this.props.isAvailableAppointmentsPage}/>
+              <SimpleList
+                day={2}
+                isAvailableAppointmentsPage={
+                  this.props.isAvailableAppointmentsPage
+                }
+              />
             </div>
           </TabContainer>
           <TabContainer dir={theme.direction}>
             <div className="tabs-container">
-              <SimpleList day={3} isAvailableAppointmentsPage={this.props.isAvailableAppointmentsPage}/>
+              <SimpleList
+                day={3}
+                isAvailableAppointmentsPage={
+                  this.props.isAvailableAppointmentsPage
+                }
+              />
             </div>
           </TabContainer>
           <TabContainer dir={theme.direction}>
             <div className="tabs-container">
-              <SimpleList day={4} isAvailableAppointmentsPage={this.props.isAvailableAppointmentsPage}/>
+              <SimpleList
+                day={4}
+                isAvailableAppointmentsPage={
+                  this.props.isAvailableAppointmentsPage
+                }
+              />
             </div>
           </TabContainer>
           <TabContainer dir={theme.direction}>
             <div className="tabs-container">
-              <SimpleList day={5} isAvailableAppointmentsPage={this.props.isAvailableAppointmentsPage}/>
+              <SimpleList
+                day={5}
+                isAvailableAppointmentsPage={
+                  this.props.isAvailableAppointmentsPage
+                }
+              />
             </div>
           </TabContainer>
           <TabContainer dir={theme.direction}>
             <div className="tabs-container">
-              <SimpleList day={6} isAvailableAppointmentsPage={this.props.isAvailableAppointmentsPage}/>
+              <SimpleList
+                day={6}
+                isAvailableAppointmentsPage={
+                  this.props.isAvailableAppointmentsPage
+                }
+              />
             </div>
           </TabContainer>
           <TabContainer dir={theme.direction}>
             <div className="tabs-container">
-              <SimpleList day={7} isAvailableAppointmentsPage={this.props.isAvailableAppointmentsPage}/>
+              <SimpleList
+                day={7}
+                isAvailableAppointmentsPage={
+                  this.props.isAvailableAppointmentsPage
+                }
+              />
             </div>
-          </TabContainer>
+          </TabContainer> */}
+          {days.map(day => (
+            <TabContainer dir={theme.direction}>
+              <div className="tabs-container">
+                <SimpleList
+                  day={day}
+                  isAvailableAppointmentsPage={
+                    this.props.isAvailableAppointmentsPage
+                  }
+                />
+              </div>
+            </TabContainer>
+          ))}
         </SwipeableViews>
       </div>
     );
@@ -118,6 +166,5 @@ AppointmentTabs.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired
 };
-
 
 export default withStyles(styles, { withTheme: true })(AppointmentTabs);

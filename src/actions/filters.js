@@ -17,3 +17,8 @@ export const setMyEndDate = endDate => ({
   type: "SET_MY_END_DATE",
   endDate
 });
+
+// export const setIsAvailableAppointmentsPage = (isSet) => ({
+//   type:'IS_AVAILABLE_APPOINTMENTS_PAGE',
+//   isAvailableAppointmentsPage:isSet
+// });

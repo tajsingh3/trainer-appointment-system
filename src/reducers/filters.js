@@ -3,8 +3,9 @@ import moment from "moment";
 const initialState = {
   myStartDate: moment().startOf("month"),
   myEndDate: moment().endOf("month"),
-  availableStartDate:null,
-  availableEndDate:null
+  availableStartDate: null,
+  availableEndDate: null,
+  // isAvailableAppointmentsPage:undefined
 };
 
 const filtersReducer = (state = initialState, action) => {
@@ -17,6 +18,11 @@ const filtersReducer = (state = initialState, action) => {
       return { ...state, myStartDate: action.startDate };
     case "SET_MY_END_DATE":
       return { ...state, myEndDate: action.endDate };
+    // case "IS_AVAILABLE_APPOINTMENTS_PAGE":
+    //   return {
+    //     ...state,
+    //     isAvailableAppointmentsPage: action.isAvailableAppointmentsPage
+    //   };
     default:
       return state;
   }

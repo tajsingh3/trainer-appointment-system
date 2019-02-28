@@ -20,12 +20,6 @@ const styles = theme => ({
 function SimpleList(props) {
   const { classes } = props;
 
-  //  const { appointments, day, isAvailableAppointmentsPage } = props;
-
-  //  const filteredAppointments = selecteAvailableAppointments
-
-  // const filteredAppointments = selectAppointmentsByDay(appointments, day);
-
   return (
     <div className={classes.root}>
       <List component="nav">
