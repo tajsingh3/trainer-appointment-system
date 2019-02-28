@@ -1,27 +1,3 @@
-// export const addAppointment = (appointment, person) => {
-//   person = person.toUpperCase();
-//   return {
-//     type: `ADD_${person}_APPOINTMENT`,
-//     appointment
-//   };
-// };
-
-// export const cancelAppointment = (id, person) => {
-//   person = person.toUpperCase();
-//   return {
-//     type: `CANCEL_${person}_APPOINTMENT`,
-//     id
-//   };
-// };
-
-// export const removeAppointment = (id, person) => {
-//   person = person.toUpperCase();
-//   return {
-//     type: `REMOVE_${person}_APPOINTMENT`,
-//     id
-//   };
-// };
-
 import database from "../firebase/firebase";
 
 export const addAppointment = (appointment, appointmentType) => {
@@ -46,12 +22,12 @@ export const startAddAppointment = (appointment, appointmentType) => {
   };
 };
 
-// export const selectAppointment = appointment => {
-//   return {
-//     type: "SELECT_APPOINTMENT",
-//     id
-//   };
-// };
+export const selectAppointment = appointment => {
+  return {
+    type: "SELECT_AVAILABLE_APPOINTMENT",
+    appointment
+  };
+};
 
 export const startSelectAppointment = appointment => {
   return dispatch => {
@@ -62,7 +38,16 @@ export const startSelectAppointment = appointment => {
         status: "selected"
       })
       .then(() => {
-        dispatch(addAppointment(appointment, "my"));
+        const { id, date } = appointment;
+        dispatch(addAppointment({ id, date, status: "selected" }, "my"));
+      });
+
+    database
+      .ref(`availableAppointments/${appointment.id}/status`)
+      .set("selected")
+      .then(() => {
+        const { id, date } = appointment;
+        dispatch(selectAppointment({ id, date, status: "selected" }));
       });
   };
 };

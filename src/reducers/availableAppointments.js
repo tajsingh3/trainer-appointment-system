@@ -10,11 +10,18 @@ const availableAppointmentsReducer = (state = [], action) => {
         return appointment;
       });
     case "REMOVE_AVAILABLE_APPOINTMENT":
-      return state.filter((appointment) => {
-        if(appointment.id === action.id){
+      return state.filter(appointment => {
+        if (appointment.id === action.id) {
           return false;
         }
         return true;
+      });
+    case "SELECT_AVAILABLE_APPOINTMENT":
+      return state.map(appointment => {
+        if (appointment.id === action.appointment.id) {
+          return action.appointment;
+        }
+        return appointment;
       });
     default:
       return state;
