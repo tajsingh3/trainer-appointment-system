@@ -1,13 +1,13 @@
 import React from "react";
 
 import AppointmentTabs from "../AppointmentTabs";
-import AppointmentDateRangePicker from '../AppointmentDateRangePicker';
+import AppointmentDateRangePicker from "../AppointmentDateRangePicker";
 
 const AppointmentSlotsPage = () => (
   <div>
     <p>Appointment Slots Page</p>
     <AppointmentDateRangePicker />
-    <AppointmentTabs />
+    <AppointmentTabs isAvailableAppointmentsPage/>
   </div>
 );
 

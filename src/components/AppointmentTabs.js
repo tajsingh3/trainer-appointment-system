@@ -75,37 +75,37 @@ class AppointmentTabs extends React.Component {
         >
           <TabContainer dir={theme.direction}>
             <div className="tabs-container">
-              <SimpleList day={1} />
+              <SimpleList day={1} isAvailableAppointmentsPage={this.props.isAvailableAppointmentsPage}/>
             </div>
           </TabContainer>
           <TabContainer dir={theme.direction}>
             <div className="tabs-container">
-              <SimpleList day={2} />
+              <SimpleList day={2} isAvailableAppointmentsPage={this.props.isAvailableAppointmentsPage}/>
             </div>
           </TabContainer>
           <TabContainer dir={theme.direction}>
             <div className="tabs-container">
-              <SimpleList day={3} />
+              <SimpleList day={3} isAvailableAppointmentsPage={this.props.isAvailableAppointmentsPage}/>
             </div>
           </TabContainer>
           <TabContainer dir={theme.direction}>
             <div className="tabs-container">
-              <SimpleList day={4} />
+              <SimpleList day={4} isAvailableAppointmentsPage={this.props.isAvailableAppointmentsPage}/>
             </div>
           </TabContainer>
           <TabContainer dir={theme.direction}>
             <div className="tabs-container">
-              <SimpleList day={5} />
+              <SimpleList day={5} isAvailableAppointmentsPage={this.props.isAvailableAppointmentsPage}/>
             </div>
           </TabContainer>
           <TabContainer dir={theme.direction}>
             <div className="tabs-container">
-              <SimpleList day={6} />
+              <SimpleList day={6} isAvailableAppointmentsPage={this.props.isAvailableAppointmentsPage}/>
             </div>
           </TabContainer>
           <TabContainer dir={theme.direction}>
             <div className="tabs-container">
-              <SimpleList day={7} />
+              <SimpleList day={7} isAvailableAppointmentsPage={this.props.isAvailableAppointmentsPage}/>
             </div>
           </TabContainer>
         </SwipeableViews>

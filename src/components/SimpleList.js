@@ -5,7 +5,7 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import { connect } from "react-redux";
 
-import { selectAppointmentsByDay } from "../selectors/appointments";
+import { selectAppointmentsByDay, selecteAvailableAppointments } from "../selectors/appointments";
 
 import Appointment from "./Appointment";
 
@@ -20,7 +20,9 @@ const styles = theme => ({
 function SimpleList(props) {
   const { classes } = props;
 
-  // const { appointments, day } = props;
+  //  const { appointments, day, isAvailableAppointmentsPage } = props;
+
+  //  const filteredAppointments = selecteAvailableAppointments
 
   // const filteredAppointments = selectAppointmentsByDay(appointments, day);
 
@@ -42,7 +44,11 @@ SimpleList.propTypes = {
 };
 
 const mapStateToProps = (state, props) => {
-  const filteredAppointments = selectAppointmentsByDay(state.trainerAppointments, props.day);
+  let filteredAppointments;
+  if(props.isAvailableAppointmentsPage){
+    filteredAppointments = selecteAvailableAppointments(state.trainerAppointments,state.filters);
+  }
+  filteredAppointments = selectAppointmentsByDay(filteredAppointments, props.day);
 
   return {
     appointments: filteredAppointments

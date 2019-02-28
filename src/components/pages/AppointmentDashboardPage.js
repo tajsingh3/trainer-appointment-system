@@ -6,7 +6,7 @@ import AppointmentDateRangePicker from "../AppointmentDateRangePicker";
 const AppointmentDashboardPage = () => (
   <div>
     <p>Appontment Dahboard Page</p>
-    <AppointmentDateRangePicker />
+    <AppointmentDateRangePicker isMyAppointmentsPage/>
     <AppointmentTabs />
   </div>
 );
