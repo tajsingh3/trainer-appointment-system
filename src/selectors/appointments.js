@@ -4,16 +4,31 @@ const selectAppointmentsByDay = (appointments, day) => {
   });
 };
 
-const selecteAvailableAppointments = (
-  appointments,
-  { availableStartDate, availableEndDate }
-) => {
+// const selecteAvailableAppointments = (
+//   appointments,
+//   { availableStartDate, availableEndDate }
+// ) => {
+//   const visibleAppointments = appointments.filter(appointment => {
+//     const startDateMatch = availableStartDate
+//       ? availableStartDate.isSameOrBefore(appointment.date, "day")
+//       : true;
+//     const endDateMatch = availableEndDate
+//       ? availableEndDate.isSameOrAfter(appointment.date, "day")
+//       : true;
+
+//     return startDateMatch && endDateMatch;
+//   });
+
+//   return visibleAppointments;
+// };
+
+const selectAppointments = (appointments, startDate, endDate) => {
   const visibleAppointments = appointments.filter(appointment => {
-    const startDateMatch = availableStartDate
-      ? availableStartDate.isSameOrBefore(appointment.date, "day")
+    const startDateMatch = startDate
+      ? startDate.isSameOrBefore(appointment.date, "day")
       : true;
-    const endDateMatch = availableEndDate
-      ? availableEndDate.isSameOrAfter(appointment.date, "day")
+    const endDateMatch = endDate
+      ? endDate.isSameOrAfter(appointment.date, "day")
       : true;
 
     return startDateMatch && endDateMatch;
@@ -22,4 +37,4 @@ const selecteAvailableAppointments = (
   return visibleAppointments;
 };
 
-export { selectAppointmentsByDay, selecteAvailableAppointments };
+export { selectAppointmentsByDay, selectAppointments };

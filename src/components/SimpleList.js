@@ -5,7 +5,10 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import { connect } from "react-redux";
 
-import { selectAppointmentsByDay, selecteAvailableAppointments } from "../selectors/appointments";
+import {
+  selectAppointmentsByDay,
+  selectAppointments
+} from "../selectors/appointments";
 
 import Appointment from "./Appointment";
 
@@ -25,7 +28,10 @@ function SimpleList(props) {
       <List component="nav">
         {props.appointments.map(appointment => (
           <ListItem button>
-            <Appointment appointment={appointment}/>
+            <Appointment
+              appointment={appointment}
+              isAvailableAppointmentsPage={props.isAvailableAppointmentsPage}
+            />
           </ListItem>
         ))}
       </List>
@@ -39,11 +45,27 @@ SimpleList.propTypes = {
 
 const mapStateToProps = (state, props) => {
   let filteredAppointments;
-  console.log(state.filters.isAvailableAppointmentsPage);
-  if(props.isAvailableAppointmentsPage){
-    filteredAppointments = selecteAvailableAppointments(state.availableAppointments,state.filters);
+
+  if (props.isAvailableAppointmentsPage) {
+    const { availableStartDate, availableEndDate } = state.filters;
+    filteredAppointments = selectAppointments(
+      state.availableAppointments,
+      availableStartDate,
+      availableEndDate
+    );
+  } else {
+    const { myStartDate, myEndDate } = state.filters;
+    filteredAppointments = selectAppointments(
+      state.myAppointments,
+      myStartDate,
+      myEndDate
+    );
   }
-  filteredAppointments = selectAppointmentsByDay(filteredAppointments, props.day);
+
+  filteredAppointments = selectAppointmentsByDay(
+    filteredAppointments,
+    props.day
+  );
 
   return {
     appointments: filteredAppointments

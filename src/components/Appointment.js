@@ -24,15 +24,26 @@ const Appointment = props => {
       <Typography variant="subtitle2" gutterBottom>
         {props.appointment.date.format("dddd, MMMM Do YYYY h:mm a")}
       </Typography>
-      <Button
-        variant="outlined"
-        color="primary"
-        className={classes.button}
-        onClick={props.selectAppointment}
-        disabled={props.isSelected}
-      >
-        Select
-      </Button>
+      {props.isAvailableAppointmentsPage ? (
+        <Button
+          variant="outlined"
+          color="primary"
+          className={classes.button}
+          onClick={props.selectAppointment}
+          disabled={props.isSelected}
+        >
+          Select
+        </Button>
+      ) : (
+        <Button
+          variant="outlined"
+          color="primary"
+          className={classes.button}
+          onClick={props.selectAppointment}
+        >
+          Cancel
+        </Button>
+      )}
     </div>
   );
 };
@@ -43,8 +54,8 @@ const mapDispatchToProps = (dispatch, props) => {
   };
 };
 
-const mapStateToProps = (state,props) => {
-  const isSelected = props.appointment.status === 'selected';
+const mapStateToProps = (state, props) => {
+  const isSelected = props.appointment.status === "selected";
   return { isSelected };
 };
 
