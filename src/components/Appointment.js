@@ -25,7 +25,7 @@ const Appointment = props => {
   return (
     <div className="appointment-container">
       <Typography variant="subtitle2" gutterBottom>
-        {props.appointment.date.format("dddd, MMMM Do YYYY h:mm a")}
+        {props.appointment.date.format("dddd, MMMM Do YYYY h:mm a")} Status: {props.appointment.status}
       </Typography>
       {props.isAvailableAppointmentsPage ? (
         <Button
@@ -33,7 +33,7 @@ const Appointment = props => {
           color="primary"
           className={classes.button}
           onClick={props.selectAppointment}
-          disabled={props.isSelected}
+          disabled={props.isSelected || props.isCanceled}
         >
           Select
         </Button>
