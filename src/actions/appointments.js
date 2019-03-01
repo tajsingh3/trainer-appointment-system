@@ -52,6 +52,28 @@ export const startSelectAppointment = appointment => {
   };
 };
 
+export const startCancelAppointment = appointment => {
+  return dispatch => {
+    database
+      .ref(`myAppointments/${appointment.id}`)
+      .update({
+        status: "canceled"
+      })
+      .then(() => {
+        const { id } = appointment;
+        dispatch(cancelAppointment(id, "my"));
+      });
+
+    database
+      .ref(`availableAppointments/${appointment.id}/status`)
+      .set("canceled")
+      .then(() => {
+        const { id } = appointment;
+        dispatch(cancelAppointment(id, "available"));
+      });
+  };
+};
+
 //this can only be from client so muappointment
 export const cancelAppointment = (id, appointmentType) => {
   appointmentType = appointmentType.toUpperCase();

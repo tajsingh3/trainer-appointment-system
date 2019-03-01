@@ -5,7 +5,10 @@ import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
 
-import { startSelectAppointment } from "../actions/appointments";
+import {
+  startSelectAppointment,
+  startCancelAppointment
+} from "../actions/appointments";
 
 import "../styles/appointment.scss";
 
@@ -39,7 +42,8 @@ const Appointment = props => {
           variant="outlined"
           color="primary"
           className={classes.button}
-          onClick={props.selectAppointment}
+          onClick={props.cancelAppointment}
+          disabled={props.isCanceled}
         >
           Cancel
         </Button>
@@ -50,13 +54,16 @@ const Appointment = props => {
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    selectAppointment: () => dispatch(startSelectAppointment(props.appointment))
+    selectAppointment: () =>
+      dispatch(startSelectAppointment(props.appointment)),
+    cancelAppointment: () => dispatch(startCancelAppointment(props.appointment))
   };
 };
 
 const mapStateToProps = (state, props) => {
   const isSelected = props.appointment.status === "selected";
-  return { isSelected };
+  const isCanceled = props.appointment.status === "canceled";
+  return { isSelected, isCanceled };
 };
 
 Appointment.propTypes = {
