@@ -23,6 +23,8 @@ const availableAppointmentsReducer = (state = [], action) => {
         }
         return appointment;
       });
+    case "SET_AVAILABLE_APPOINTMENTS":
+      return action.appointments;
     default:
       return state;
   }

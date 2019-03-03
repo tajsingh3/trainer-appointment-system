@@ -6,7 +6,11 @@ import * as serviceWorker from "./serviceWorker";
 import { Provider } from "react-redux";
 
 import configureStore from "./store/configureStore";
-import { startSetMyAppointments } from "./actions/appointments";
+import {
+  startSetMyAppointments,
+  startSetAvailableAppointments
+} from "./actions/appointments";
+
 // import './firebase/firebase';
 
 // import {
@@ -34,11 +38,17 @@ const jsx = (
   </Provider>
 );
 
+const renderApp = async () => {
+  await store.dispatch(startSetMyAppointments());
+
+  await store.dispatch(startSetAvailableAppointments());
+
+  ReactDOM.render(jsx, document.getElementById("root"));
+};
+
 ReactDOM.render(<p>Loading...</p>, document.getElementById("root"));
 
-store.dispatch(startSetMyAppointments()).then(() => {
-  ReactDOM.render(jsx, document.getElementById("root"));
-});
+renderApp();
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

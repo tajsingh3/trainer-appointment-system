@@ -115,6 +115,37 @@ export const startSetMyAppointments = () => {
   };
 };
 
+export const setAvailableAppointments = appointments => {
+  return {
+    type: "SET_AVAILABLE_APPOINTMENTS",
+    appointments
+  };
+};
+
+export const startSetAvailableAppointments = () => {
+  return dispatch => {
+    return database
+      .ref("availableAppointments")
+      .once("value")
+      .then(snapshot => {
+        let appointments = [];
+
+        snapshot.forEach(childSnapshot => {
+          const { date, status } = childSnapshot.val();
+          const dateMoment = moment(date, "dddd, MMMM Do YYYY h:mm a");
+
+          appointments.push({
+            id: childSnapshot.key,
+            date: dateMoment,
+            status
+          });
+        });
+
+        dispatch(setAvailableAppointments(appointments));
+      });
+  };
+};
+
 export const removeAppointment = (id, appointmentType) => {
   appointmentType = appointmentType.toUpperCase();
   return {
