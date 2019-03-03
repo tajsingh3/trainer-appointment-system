@@ -10,6 +10,7 @@ import {
   startSetMyAppointments,
   startSetAvailableAppointments
 } from "./actions/appointments";
+import Spinner from './components/Spinner';
 
 // import './firebase/firebase';
 
@@ -46,7 +47,7 @@ const renderApp = async () => {
   ReactDOM.render(jsx, document.getElementById("root"));
 };
 
-ReactDOM.render(<p>Loading...</p>, document.getElementById("root"));
+ReactDOM.render(<Spinner/>, document.getElementById("root"));
 
 renderApp();
 
