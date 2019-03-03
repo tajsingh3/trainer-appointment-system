@@ -16,6 +16,8 @@ const myAppointmentsReducer = (state = [], action) => {
         }
         return true;
       });
+    case "SET_MY_APPOINTMENTS":
+      return action.appointments;
     default:
       return state;
   }

@@ -1,4 +1,5 @@
 import database from "../firebase/firebase";
+import moment from "moment";
 
 export const addAppointment = (appointment, appointmentType) => {
   appointmentType = appointmentType.toUpperCase();
@@ -80,6 +81,37 @@ export const cancelAppointment = (id, appointmentType) => {
   return {
     type: `CANCEL_${appointmentType}_APPOINTMENT`,
     id
+  };
+};
+
+export const setMyAppointments = appointments => {
+  return {
+    type: "SET_MY_APPOINTMENTS",
+    appointments
+  };
+};
+
+export const startSetMyAppointments = () => {
+  return dispatch => {
+    return database
+      .ref("myAppointments")
+      .once("value")
+      .then(snapshot => {
+        let appointments = [];
+
+        snapshot.forEach(childSnapshot => {
+          const { date, status } = childSnapshot.val();
+          const dateMoment = moment(date, "dddd, MMMM Do YYYY h:mm a");
+
+          appointments.push({
+            id: childSnapshot.key,
+            date: dateMoment,
+            status
+          });
+        });
+
+        dispatch(setMyAppointments(appointments));
+      });
   };
 };
 
