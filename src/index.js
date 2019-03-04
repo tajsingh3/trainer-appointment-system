@@ -12,6 +12,7 @@ import {
 } from "./actions/appointments";
 import Spinner from "./components/Spinner";
 import { firebase } from "./firebase/firebase";
+import { history } from "./routers/AppRouter";
 
 // import './firebase/firebase';
 
@@ -40,23 +41,50 @@ const jsx = (
   </Provider>
 );
 
-const renderApp = async () => {
+// const renderApp = async () => {
+//   await store.dispatch(startSetMyAppointments());
+
+//   await store.dispatch(startSetAvailableAppointments());
+
+//   ReactDOM.render(jsx, document.getElementById("root"));
+// };
+const getAppointmentsData = async () => {
   await store.dispatch(startSetMyAppointments());
+  return await store.dispatch(startSetAvailableAppointments());
+};
 
-  await store.dispatch(startSetAvailableAppointments());
+// const renderApp = () => {
+//   getAppointmentsData().then(() => {
+//     ReactDOM.render(jsx, document.getElementById("root"));
+//   });
+// };
 
-  ReactDOM.render(jsx, document.getElementById("root"));
+let hasRendered = false;
+const renderApp = () => {
+  if (!hasRendered) {
+    ReactDOM.render(jsx, document.getElementById("root"));
+    hasRendered = true;
+  }
 };
 
 ReactDOM.render(<Spinner />, document.getElementById("root"));
 
-renderApp();
+// renderApp();
 
 firebase.auth().onAuthStateChanged(user => {
   if (user) {
+    getAppointmentsData().then(() => {
+      renderApp();
+
+      if (history.location.pathname === "/") {
+        history.push("/myappointments");
+      }
+    });
     console.log("logged in");
   } else {
+    renderApp();
     console.log("logged out");
+    history.push("/");
   }
 });
 

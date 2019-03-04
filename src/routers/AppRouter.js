@@ -1,5 +1,6 @@
 import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { Router, Route } from "react-router-dom";
+import createHistory from "history/createBrowserHistory";
 
 import Header from "../components/Header";
 import MyAppointmentsPage from "../components/pages/MyAppointmentsPage";
@@ -7,8 +8,10 @@ import HomePage from "../components/pages/HomePage";
 import CreateAppointmentPage from "../components/pages/CreateAppointmentPage";
 import AvailableAppointmentsPage from "../components/pages/AvailableAppointmentsPage";
 
+export const history = createHistory();
+
 const AppRouter = () => (
-  <BrowserRouter>
+  <Router history={history}>
     <div>
       <Header />
       <Route path="/" component={HomePage} exact />
@@ -19,7 +22,7 @@ const AppRouter = () => (
         component={AvailableAppointmentsPage}
       />
     </div>
-  </BrowserRouter>
+  </Router>
 );
 
 export default AppRouter;
