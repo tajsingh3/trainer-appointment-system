@@ -13,6 +13,7 @@ import {
 import Spinner from "./components/Spinner";
 import { firebase } from "./firebase/firebase";
 import { history } from "./routers/AppRouter";
+import { login, logout } from "./actions/auth";
 
 // import './firebase/firebase';
 
@@ -61,6 +62,8 @@ const getAppointmentsData = async () => {
 
 let hasRendered = false;
 const renderApp = () => {
+  console.log(hasRendered);
+
   if (!hasRendered) {
     ReactDOM.render(jsx, document.getElementById("root"));
     hasRendered = true;
@@ -73,6 +76,7 @@ ReactDOM.render(<Spinner />, document.getElementById("root"));
 
 firebase.auth().onAuthStateChanged(user => {
   if (user) {
+    store.dispatch(login(user.uid));
     getAppointmentsData().then(() => {
       renderApp();
 
@@ -82,6 +86,9 @@ firebase.auth().onAuthStateChanged(user => {
     });
     console.log("logged in");
   } else {
+    console.log('logging out')
+    store.dispatch(logout());
+    console.log('after dispatch');
     renderApp();
     console.log("logged out");
     history.push("/");
