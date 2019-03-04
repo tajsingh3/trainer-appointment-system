@@ -40,12 +40,15 @@ function ButtonAppBar(props) {
           <Typography variant="h6" color="inherit" className={classes.grow}>
             Personal Trainer Appointment System
           </Typography>
-          <Button color="inherit" onClick={props.startLogin}>
-            Login
-          </Button>
-          <Button color="inherit" onClick={props.startLogout}>
-            Logout
-          </Button>
+          {!props.isAuth ? (
+            <Button color="inherit" onClick={props.startLogin}>
+              Login
+            </Button>
+          ) : (
+            <Button color="inherit" onClick={props.startLogout}>
+              Logout
+            </Button>
+          )}
         </Toolbar>
       </AppBar>
     </div>
@@ -56,6 +59,8 @@ ButtonAppBar.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
+const mapStatToProps = state => ({ isAuth: !!state.auth.uid });
+
 const mapDispatchToProps = dispatch => {
   return {
     startLogin: () => dispatch(startLogin()),
@@ -65,7 +70,7 @@ const mapDispatchToProps = dispatch => {
 
 export default withStyles(styles)(
   connect(
-    undefined,
+    mapStatToProps,
     mapDispatchToProps
   )(ButtonAppBar)
 );
