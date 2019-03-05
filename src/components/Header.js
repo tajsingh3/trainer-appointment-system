@@ -6,6 +6,7 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 import AppBar from "./AppBar";
 
@@ -34,6 +35,7 @@ class TemporaryDrawer extends React.Component {
 
   render() {
     const { classes } = this.props;
+    const { isAuth } = this.props;
 
     const sideList = (
       <div className={classes.list}>
@@ -43,21 +45,27 @@ class TemporaryDrawer extends React.Component {
               <ListItemText primary="Home" />
             </Link>
           </ListItem>
-          <ListItem button>
-            <Link to="/myappointments">
-              <ListItemText primary="My Appointments" />
-            </Link>
-          </ListItem>
-          <ListItem button>
-            <Link to="/createappointments">
-              <ListItemText primary="Create Appointments" />
-            </Link>
-          </ListItem>
-          <ListItem button>
-            <Link to="availableappointments">
-              <ListItemText primary="Available Appointments" />
-            </Link>
-          </ListItem>
+          {isAuth && (
+            <ListItem button>
+              <Link to="/myappointments">
+                <ListItemText primary="My Appointments" />
+              </Link>
+            </ListItem>
+          )}
+          {isAuth && (
+            <ListItem button>
+              <Link to="/createappointments">
+                <ListItemText primary="Create Appointments" />
+              </Link>
+            </ListItem>
+          )}
+          {isAuth && (
+            <ListItem button>
+              <Link to="availableappointments">
+                <ListItemText primary="Available Appointments" />
+              </Link>
+            </ListItem>
+          )}
         </List>
       </div>
     );
@@ -87,4 +95,8 @@ TemporaryDrawer.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(TemporaryDrawer);
+const mapStateToProps = state => ({
+  isAuth: !!state.auth.uid
+});
+
+export default withStyles(styles)(connect(mapStateToProps)(TemporaryDrawer));
