@@ -1,8 +1,8 @@
 import React from 'react';
 
 const HomePage = () => (
-    <div>
-        <h2>HomePage</h2>
+    <div className='personal-trainer-image'>
+        <img src="images/personal-trainer.png" alt=""></img>
     </div>
 );
 

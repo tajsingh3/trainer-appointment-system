@@ -37,7 +37,7 @@ function ButtonAppBar(props) {
           >
             <MenuIcon onClick={props.toggleDrawer} />
           </IconButton>
-          <Typography variant="h6" color="inherit" className={classes.grow}>
+          <Typography variant="h5" color="inherit" className={classes.grow}>
             Personal Trainer Appointment System
           </Typography>
           {!props.isAuth ? (

@@ -15,6 +15,8 @@ import { firebase } from "./firebase/firebase";
 import { history } from "./routers/AppRouter";
 import { login, logout, startIsTrainer } from "./actions/auth";
 
+import "./styles/styles.scss";
+
 // import './firebase/firebase';
 
 // import {

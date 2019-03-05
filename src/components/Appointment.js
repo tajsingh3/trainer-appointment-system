@@ -10,7 +10,7 @@ import {
   startCancelAppointment
 } from "../actions/appointments";
 
-import "../styles/appointment.scss";
+// import "../styles/appointment.scss";
 
 const styles = {
   root: {

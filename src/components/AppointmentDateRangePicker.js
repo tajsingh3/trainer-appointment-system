@@ -22,7 +22,6 @@ class AppointmentDateRangePicker extends Component {
   render() {
     return (
       <div>
-        <p>Date Range Picker</p>
         <DateRangePicker
           startDate={this.state.startDate} // momentPropTypes.momentObj or null,
           startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,

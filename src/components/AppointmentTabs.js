@@ -9,7 +9,7 @@ import Typography from "@material-ui/core/Typography";
 
 import SimpleList from "./SimpleList";
 
-import "../styles/tabs.scss";
+// import "../styles/tabs.scss";
 
 function TabContainer({ children, dir }) {
   return (
