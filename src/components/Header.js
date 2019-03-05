@@ -96,7 +96,11 @@ TemporaryDrawer.propTypes = {
 };
 
 const mapStateToProps = state => ({
+<<<<<<< HEAD
   isAuth: state.auth.uid
+=======
+  isAuth: !!state.auth.uid
+>>>>>>> rough
 });
 
 export default withStyles(styles)(connect(mapStateToProps)(TemporaryDrawer));

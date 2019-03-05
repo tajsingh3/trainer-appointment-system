@@ -30,10 +30,35 @@ export const selectAppointment = appointment => {
   };
 };
 
+// export const startSelectAppointment = appointment => {
+//   return dispatch => {
+//     database
+//       .ref(`myAppointments/${appointment.id}`)
+//       .set({
+//         date: appointment.date.format("dddd, MMMM Do YYYY h:mm a"),
+//         status: "selected"
+//       })
+//       .then(() => {
+//         const { id, date } = appointment;
+//         dispatch(addAppointment({ id, date, status: "selected" }, "my"));
+//       });
+
+//     database
+//       .ref(`availableAppointments/${appointment.id}/status`)
+//       .set("selected")
+//       .then(() => {
+//         const { id, date } = appointment;
+//         dispatch(selectAppointment({ id, date, status: "selected" }));
+//       });
+//   };
+// };
+
 export const startSelectAppointment = appointment => {
-  return dispatch => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
+
     database
-      .ref(`myAppointments/${appointment.id}`)
+      .ref(`users/${uid}/myAppointments/${appointment.id}`)
       .set({
         date: appointment.date.format("dddd, MMMM Do YYYY h:mm a"),
         status: "selected"
@@ -91,10 +116,36 @@ export const setMyAppointments = appointments => {
   };
 };
 
+// export const startSetMyAppointments = () => {
+//   return dispatch => {
+//     return database
+//       .ref("myAppointments")
+//       .once("value")
+//       .then(snapshot => {
+//         let appointments = [];
+
+//         snapshot.forEach(childSnapshot => {
+//           const { date, status } = childSnapshot.val();
+//           const dateMoment = moment(date, "dddd, MMMM Do YYYY h:mm a");
+
+//           appointments.push({
+//             id: childSnapshot.key,
+//             date: dateMoment,
+//             status
+//           });
+//         });
+
+//         dispatch(setMyAppointments(appointments));
+//       });
+//   };
+// };
+
 export const startSetMyAppointments = () => {
-  return dispatch => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
+
     return database
-      .ref("myAppointments")
+      .ref(`users/${uid}/myAppointments`)
       .once("value")
       .then(snapshot => {
         let appointments = [];
