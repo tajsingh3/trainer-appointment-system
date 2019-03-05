@@ -79,9 +79,12 @@ export const startSelectAppointment = appointment => {
 };
 
 export const startCancelAppointment = appointment => {
-  return dispatch => {
+  return (dispatch, getState) => {
+    const  uid  = getState().auth.uid;
+    
+    console.log('uid',uid);
     database
-      .ref(`myAppointments/${appointment.id}`)
+      .ref(`users/${uid}/myAppointments/${appointment.id}`)
       .update({
         status: "canceled"
       })

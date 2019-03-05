@@ -13,7 +13,7 @@ import {
 import Spinner from "./components/Spinner";
 import { firebase } from "./firebase/firebase";
 import { history } from "./routers/AppRouter";
-import { login, logout } from "./actions/auth";
+import { login, logout, startIsTrainer } from "./actions/auth";
 
 // import './firebase/firebase';
 
@@ -77,6 +77,7 @@ ReactDOM.render(<Spinner />, document.getElementById("root"));
 firebase.auth().onAuthStateChanged(user => {
   if (user) {
     store.dispatch(login(user.uid));
+    store.dispatch(startIsTrainer());
     getAppointmentsData().then(() => {
       renderApp();
 

@@ -8,6 +8,7 @@ import HomePage from "../components/pages/HomePage";
 import CreateAppointmentPage from "../components/pages/CreateAppointmentPage";
 import AvailableAppointmentsPage from "../components/pages/AvailableAppointmentsPage";
 import PrivateRoute from "./PrivateRoute";
+import PrivateTrainerRoute from './PrivateTrainerRoute';
 
 export const history = createHistory();
 
@@ -18,7 +19,7 @@ const AppRouter = () => (
       <Switch>
       <Route path="/" component={HomePage} exact />
       <PrivateRoute path="/myappointments" component={MyAppointmentsPage} />
-      <PrivateRoute path="/createappointments" component={CreateAppointmentPage} />
+      <PrivateTrainerRoute path="/createappointments" component={CreateAppointmentPage} />
       <PrivateRoute
         path="/availableappointments"
         component={AvailableAppointmentsPage}

@@ -35,7 +35,7 @@ class TemporaryDrawer extends React.Component {
 
   render() {
     const { classes } = this.props;
-    const { isAuth } = this.props;
+    const { isAuth, isTrainer } = this.props;
 
     const sideList = (
       <div className={classes.list}>
@@ -52,7 +52,7 @@ class TemporaryDrawer extends React.Component {
               </Link>
             </ListItem>
           )}
-          {isAuth && (
+          {isTrainer && (
             <ListItem button>
               <Link to="/createappointments">
                 <ListItemText primary="Create Appointments" />
@@ -96,11 +96,8 @@ TemporaryDrawer.propTypes = {
 };
 
 const mapStateToProps = state => ({
-<<<<<<< HEAD
-  isAuth: state.auth.uid
-=======
-  isAuth: !!state.auth.uid
->>>>>>> rough
+  isAuth: !!state.auth.uid,
+  isTrainer: state.auth.isTrainer
 });
 
 export default withStyles(styles)(connect(mapStateToProps)(TemporaryDrawer));

@@ -1,4 +1,4 @@
-import { firebase, googleAuthProvider } from "../firebase/firebase";
+import database, { firebase, googleAuthProvider } from "../firebase/firebase";
 
 export const startLogin = () => {
   return () => {
@@ -22,3 +22,22 @@ export const login = uid => {
 export const logout = () => ({
   type: "LOGOUT"
 });
+
+export const isTrainer = isTrainer => ({
+  type: "IS_TRAINER",
+  isTrainer
+});
+
+export const startIsTrainer = () => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
+
+    database
+      .ref(`users/${uid}/isTrainer`)
+      .once("value")
+      .then(snapshot => {
+        const isTrainerValue = !!snapshot.val();
+        dispatch(isTrainer(isTrainerValue));
+      });
+  };
+};
