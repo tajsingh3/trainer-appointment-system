@@ -59,7 +59,7 @@ class TemporaryDrawer extends React.Component {
               </Link>
             </ListItem>
           )}
-          {!isTrainer && (
+          {(isAuth && !isTrainer) && (
             <ListItem button>
               <Link to="availableappointments">
                 <ListItemText primary="Available Appointments" />
