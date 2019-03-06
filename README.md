@@ -18,4 +18,7 @@ Logged in as a trainer:
 
 ![creatapp](https://user-images.githubusercontent.com/33178924/53856832-c0e49080-3fa1-11e9-9eef-bb75b800955a.JPG)
 
+![capture](https://user-images.githubusercontent.com/33178924/53856863-fbe6c400-3fa1-11e9-8779-2f4c156595d2.JPG)
+
+
 
