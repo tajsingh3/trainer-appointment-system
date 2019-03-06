@@ -14,4 +14,6 @@ Logged in as a client:
 Logged in as a trainer:
 ![trainermode](https://user-images.githubusercontent.com/33178924/53856629-b1187c80-3fa0-11e9-8ff7-fb74c986d861.JPG)
 
+![tramy](https://user-images.githubusercontent.com/33178924/53856696-11a7b980-3fa1-11e9-9030-bc7c0d558a34.JPG)
+
 
