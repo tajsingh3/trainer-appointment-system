@@ -5,12 +5,12 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import moment from "moment";
 import { connect } from "react-redux";
-
 import "react-dates/initialize";
 import { SingleDatePicker } from "react-dates";
 import "react-dates/lib/css/_datepicker.css";
 
 import { startAddAppointment } from "../actions/appointments";
+import RecentAppointmentsList from "./RecentAppointmentsList";
 
 const styles = theme => ({
   container: {
@@ -31,7 +31,8 @@ class AppointmentSchedularForm extends Component {
   state = {
     date: moment(),
     focused: false,
-    time: moment().format("H:mm")
+    time: moment().format("H:mm"),
+    appointments: []
   };
 
   onSubmit = e => {
@@ -42,6 +43,12 @@ class AppointmentSchedularForm extends Component {
     }:00:00`;
     const selectedDate = moment(fullDate);
 
+    this.setState(prevState => {
+      return {
+        appointments: [...prevState.appointments, selectedDate.format("dddd, MMMM Do YYYY h:mm a")]
+      };
+    });
+
     const appointment = { id: 0, date: selectedDate, status: "available" };
     this.props.dispatch(startAddAppointment(appointment, "available"));
   };
@@ -50,7 +57,7 @@ class AppointmentSchedularForm extends Component {
     const { classes } = this.props;
 
     return (
-      <div>
+      <div className="appointment-scheduler-form-container">
         <form onSubmit={this.onSubmit} className="form">
           <div className="form__input">
             <SingleDatePicker
@@ -82,7 +89,7 @@ class AppointmentSchedularForm extends Component {
               }}
             />
           </div>
-          <div className='form__input'>
+          <div className="form__input">
             <Button
               variant="outlined"
               color="primary"
@@ -93,6 +100,9 @@ class AppointmentSchedularForm extends Component {
             </Button>
           </div>
         </form>
+        <div className="recent-appointments-list">
+          <RecentAppointmentsList appointments={this.state.appointments}/>
+        </div>
       </div>
     );
   }
