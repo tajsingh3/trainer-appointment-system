@@ -25,7 +25,8 @@ const styles = {
 };
 
 function ButtonAppBar(props) {
-  const { classes } = props;
+  const { classes, isTrainer } = props;
+  
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -38,7 +39,7 @@ function ButtonAppBar(props) {
             <MenuIcon onClick={props.toggleDrawer} />
           </IconButton>
           <Typography variant="h5" color="inherit" className={classes.grow}>
-            Personal Trainer Appointment System
+            Personal Trainer Appointment System {isTrainer ? '(Trainer Mode)':'(Client Mode)'}
           </Typography>
           {!props.isAuth ? (
             <Button color="inherit" onClick={props.startLogin}>
@@ -59,7 +60,10 @@ ButtonAppBar.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-const mapStatToProps = state => ({ isAuth: !!state.auth.uid });
+const mapStatToProps = state => ({
+  isAuth: !!state.auth.uid,
+  isTrainer: !!state.auth.isTrainer
+});
 
 const mapDispatchToProps = dispatch => {
   return {

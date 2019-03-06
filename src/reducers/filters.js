@@ -1,8 +1,10 @@
-import moment from "moment";
+// import moment from "moment";
 
 const initialState = {
-  myStartDate: moment().startOf("month"),
-  myEndDate: moment().endOf("month"),
+  // myStartDate: moment().startOf("month"),
+  // myEndDate: moment().endOf("month"),
+  myStartDate: null,
+  myEndDate: null,
   availableStartDate: null,
   availableEndDate: null,
 };

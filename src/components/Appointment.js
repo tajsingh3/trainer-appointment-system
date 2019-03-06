@@ -29,16 +29,29 @@ const Appointment = props => {
         {props.appointment.status}
       </Typography>
       {props.isAvailableAppointmentsPage ? (
+        !props.isTrainer && (
+          <Button
+            variant="outlined"
+            color="primary"
+            className={classes.button}
+            onClick={props.selectAppointment}
+            disabled={props.isSelected || props.isCanceled}
+          >
+            Select
+          </Button>
+        )
+      ) : (
         <Button
           variant="outlined"
           color="primary"
           className={classes.button}
-          onClick={props.selectAppointment}
-          disabled={props.isSelected || props.isCanceled}
+          onClick={props.cancelAppointment}
+          disabled={props.isCanceled}
         >
-          Select
+          Cancel
         </Button>
-      ) : (
+      )}
+      {props.isTrainer && (
         <Button
           variant="outlined"
           color="primary"
