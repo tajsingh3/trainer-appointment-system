@@ -80,7 +80,7 @@ class AppointmentTabs extends React.Component {
                 <SimpleList
                   day={day}
                   isAvailableAppointmentsPage={
-                    this.props.isAvailableAppointmentsPage
+                    this.props.isAvailableAppointmentsPage || this.props.isTrainer
                   }
                 />
               </div>

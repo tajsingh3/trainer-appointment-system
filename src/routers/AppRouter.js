@@ -9,6 +9,7 @@ import CreateAppointmentPage from "../components/pages/CreateAppointmentPage";
 import AvailableAppointmentsPage from "../components/pages/AvailableAppointmentsPage";
 import PrivateRoute from "./PrivateRoute";
 import PrivateTrainerRoute from './PrivateTrainerRoute';
+import PrivateClientRoute from './PrivateClientRoute';
 
 export const history = createHistory();
 
@@ -20,7 +21,7 @@ const AppRouter = () => (
       <Route path="/" component={HomePage} exact />
       <PrivateRoute path="/myappointments" component={MyAppointmentsPage} />
       <PrivateTrainerRoute path="/createappointments" component={CreateAppointmentPage} />
-      <PrivateRoute
+      <PrivateClientRoute
         path="/availableappointments"
         component={AvailableAppointmentsPage}
       />
