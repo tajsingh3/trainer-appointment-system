@@ -25,7 +25,8 @@ const Appointment = props => {
   return (
     <div className="appointment-container">
       <Typography variant="subtitle2" gutterBottom>
-        {props.appointment.date.format("dddd, MMMM Do YYYY h:mm a")} Status: {props.appointment.status}
+        {props.appointment.date.format("dddd, MMMM Do YYYY h:mm a")} Status:{" "}
+        {props.appointment.status}
       </Typography>
       {props.isAvailableAppointmentsPage ? (
         <Button
@@ -48,6 +49,11 @@ const Appointment = props => {
           Cancel
         </Button>
       )}
+      {props.isTrainer && (
+        <Button variant="outlined" color="primary" className={classes.button}>
+          Remove
+        </Button>
+      )}
     </div>
   );
 };
@@ -63,7 +69,9 @@ const mapDispatchToProps = (dispatch, props) => {
 const mapStateToProps = (state, props) => {
   const isSelected = props.appointment.status === "selected";
   const isCanceled = props.appointment.status === "canceled";
-  return { isSelected, isCanceled };
+  const isTrainer = !!state.auth.isTrainer;
+
+  return { isSelected, isCanceled, isTrainer };
 };
 
 Appointment.propTypes = {
