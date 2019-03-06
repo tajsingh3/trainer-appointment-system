@@ -5,4 +5,6 @@
 Logged in as a client
 ![clientsidebar](https://user-images.githubusercontent.com/33178924/53856138-bf659900-3f9e-11e9-9161-54f53ed3bb98.JPG)
 
+![myappointments](https://user-images.githubusercontent.com/33178924/53856362-a3aec280-3f9f-11e9-973d-5ff90cc1983f.JPG)
+
 
