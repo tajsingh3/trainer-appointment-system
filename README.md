@@ -7,4 +7,6 @@ Logged in as a client
 
 ![myappointments](https://user-images.githubusercontent.com/33178924/53856362-a3aec280-3f9f-11e9-973d-5ff90cc1983f.JPG)
 
+![calendar filter](https://user-images.githubusercontent.com/33178924/53856449-056f2c80-3fa0-11e9-9d8d-a989825587be.JPG)
+
 
