@@ -17,26 +17,8 @@ import { login, logout, startIsTrainer } from "./actions/auth";
 
 import "./styles/styles.scss";
 
-// import './firebase/firebase';
-
-// import {
-//   addAppointment,
-//   cancelAppointment,
-//   removeAppointment
-// } from "./actions/appointments";
-
-// import moment from "moment";
 
 const store = configureStore();
-// let appt = { id: 0, date: moment(), status: "available" };
-// store.dispatch(addAppointment(appt,'client'));
-
-// store.dispatch(addAppointment({id:1,date:moment(),status:'available'},'trainer'));
-
-// store.dispatch(cancelAppointment(0,'client'));
-
-// store.dispatch(removeAppointment(1,'trainer'));
-// console.log(store.getState());
 
 const jsx = (
   <Provider store={store}>
@@ -44,23 +26,10 @@ const jsx = (
   </Provider>
 );
 
-// const renderApp = async () => {
-//   await store.dispatch(startSetMyAppointments());
-
-//   await store.dispatch(startSetAvailableAppointments());
-
-//   ReactDOM.render(jsx, document.getElementById("root"));
-// };
 const getAppointmentsData = async () => {
   await store.dispatch(startSetMyAppointments());
   return await store.dispatch(startSetAvailableAppointments());
 };
-
-// const renderApp = () => {
-//   getAppointmentsData().then(() => {
-//     ReactDOM.render(jsx, document.getElementById("root"));
-//   });
-// };
 
 let hasRendered = false;
 const renderApp = () => {
@@ -73,8 +42,6 @@ const renderApp = () => {
 };
 
 ReactDOM.render(<Spinner />, document.getElementById("root"));
-
-// renderApp();
 
 firebase.auth().onAuthStateChanged(user => {
   if (user) {

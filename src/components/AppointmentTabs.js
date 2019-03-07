@@ -9,8 +9,6 @@ import Typography from "@material-ui/core/Typography";
 
 import SimpleList from "./SimpleList";
 
-// import "../styles/tabs.scss";
-
 function TabContainer({ children, dir }) {
   return (
     <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
