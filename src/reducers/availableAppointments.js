@@ -32,9 +32,3 @@ const availableAppointmentsReducer = (state = [], action) => {
 
 export default availableAppointmentsReducer;
 
-//sample appointment object
-//{
-//id:
-//date:moment,
-//status: cancelled/available/booked
-//}
